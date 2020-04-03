@@ -3,16 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/ch4_iv"
+        android:layout_width="224dp"
+        android:layout_height="125dp"
+        // android:src="@raw/img" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Button" />
+
     <Button
         android:layout_width="wrap_content"
         android:text="button1"
         android:id="@+id/button1"
         android:layout_height="wrap_content"/>
-    <ImageView
-        android:layout_width="200dp"
-        android:id="@+id/ch4_iv"
-        android:src="@raw/img"
-        android:layout_height="300dp" />
+
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/ch4_1_email"

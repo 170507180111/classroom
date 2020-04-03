@@ -1,12 +1,16 @@
 package cn.edu.sdwu.android.classroom.sn170507180111;
 
 import android.app.WallpaperManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.regex.Matcher;
@@ -29,12 +33,29 @@ public class CH4Activity1 extends AppCompatActivity implements View.OnFocusChang
         imageView.setOnLongClickListener(new View.OnClickListener(
         public boolean onLongClick(View view){
             //设置壁纸
-            WallpaperManager wallpaperManager=getSystemService()
+            WallpaperManager wallpaperManager=(WallpaperManager) getSystemService(WALLPAPER_SERVICE);
+            try{
+                wallpaperManager.setResource(R.raw.img);
+            }catch(Exception e){
+                Log.e(CH4Activity1.class.toString(),e.toString());
+            }
             return ture;
-        }
-        ));
+        };
         EditText email = (EditText) findViewById(R.id.ch4_1_email);
         email.setOnFocusChangeListener(this);
+
+        LinearLayout linearLayout=(LinearLayout)findViewById(R.id.ch4_1_11);
+        linearLayout.setOnTouchListener(new View.OnTouchListener(){
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                float  x=motionEvent.getX();
+                float y=motionEvent.getY();
+                TextView textView=(TextView)findViewById(R.id.ch4_1_tv);
+                textView.setText("x:"+x+"y:"+y);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -48,15 +69,25 @@ public class CH4Activity1 extends AppCompatActivity implements View.OnFocusChang
             Pattern pattern= Pattern.compile(regEx1);
 
             Matcher matcher=pattern.matcher(email);
-            TextView textView=(TextView)
-        }
+            TextView textView=(TextView)findViewById(R.id.ch4_1_tv);
+            if (matcher.matches()){
+                textView.setText("");
+            }else{
+                textView.setText("email invalidate");
+
+            }
     }
 
     //2）实现事件监听类，该监听类是一个特殊的java类，必须实现一个XxxListener接口
     class MyClickListener implements View.OnClickListener{
         public void onClick(View view){
-
+            Log.i(CH4Activity1.class.toString(),"button click");
         }
     }
+    }
+    public void startMain(View view){
+        //界面跳转
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }
