@@ -67,7 +67,7 @@ public class Ch7Activity1 extends AppCompatActivity {
                 Toast.makeText(Ch7Activity1.this,content,Toast.LENGTH_SHORT);
 
             }
-
+//
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
