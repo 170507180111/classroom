@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:weightSum="1">
 
     <ImageView
         android:id="@+id/ch4_iv"
         android:layout_width="224dp"
-        android:layout_height="125dp"
-        // android:src="@raw/img" />
-
+        android:layout_height="125dp"/>
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"

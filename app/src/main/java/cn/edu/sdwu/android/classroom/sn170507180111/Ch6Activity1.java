@@ -2,6 +2,7 @@ package cn.edu.sdwu.android.classroom.sn170507180111;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.content.res.XmlResourceParser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class Ch6Activity1 extends AppCompatActivity {
 
@@ -58,7 +62,21 @@ public class Ch6Activity1 extends AppCompatActivity {
         LinearLayout linearLayout=(LinearLayout)findViewById(R.id.ch6_1_11);
         registerForContextMenu(linearLayout);
 
+        XmlPullParser xmlPullParserr=resources.getXml(R.xml.words);
 
+        try {
+            while (xmlPullParserr.getEventType()!=XmlPullParser.END_DOCUMENT){
+                if(xmlPullParserr.getEventType()!=XmlPullParser.START_TAG){
+                    //判断是否是word元素（words直接通过）
+                    if(xmlPullParserr.getName().equals("word")){
+                        String word=xmlPullParserr.getAttributeValue(0);
+                    }
+                }
+                xmlPullParserr.next();
+            }
+        } catch (Exception e) {
+            Log.e(Ch6Activity1.class.toString(),e.toString());
+        }
 
     }
 
